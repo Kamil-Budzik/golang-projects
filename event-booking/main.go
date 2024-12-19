@@ -1,7 +1,9 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"github.com/kamil-budzik/event-booking/db"
@@ -13,9 +15,32 @@ func main() {
 	server := gin.Default()
 
 	server.GET("/events", getEvents)
+	server.GET("/events/:id", getEvent)
 	server.POST("/events", createEvent)
 
 	server.Run(":8080")
+}
+
+func getEvent(ctx *gin.Context) {
+	id, err := strconv.ParseInt(ctx.Param("id"), 10, 64)
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{
+			"message": "Could not parse event id.",
+		})
+		fmt.Println(err)
+		return
+	}
+
+	event, err := models.GetEventById(id)
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{
+			"message": "Could not find event with given ID.",
+		})
+		fmt.Println(err)
+		return
+	}
+
+	ctx.JSON(http.StatusOK, event)
 }
 
 func getEvents(ctx *gin.Context) {
