@@ -57,10 +57,9 @@ func login(ctx *gin.Context) {
 
 	token, err := utils.GenerateToken(user.Email, 5)
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println("Error in utils.GenerateToken", err)
 		ctx.JSON(http.StatusInternalServerError, gin.H{
 			"message": "Could not authenticate user. Token error",
-			"err":     err,
 		})
 		return
 	}

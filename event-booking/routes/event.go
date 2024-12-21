@@ -7,6 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/kamil-budzik/event-booking/helpers"
 	"github.com/kamil-budzik/event-booking/models"
+	"github.com/kamil-budzik/event-booking/utils"
 )
 
 func getEvent(ctx *gin.Context) {
@@ -35,8 +36,24 @@ func getEvents(ctx *gin.Context) {
 }
 
 func createEvent(ctx *gin.Context) {
+	token := ctx.Request.Header.Get("Authorization")
+	if token == "" {
+		ctx.JSON(http.StatusUnauthorized, gin.H{
+			"message": "Not authorized",
+		})
+		return
+	}
+
+	err := utils.VerifyToken(token)
+	if err != nil {
+		ctx.JSON(http.StatusUnauthorized, gin.H{
+			"message": "Not authorized",
+		})
+		return
+	}
+
 	var event models.Event
-	err := ctx.ShouldBindJSON(&event)
+	err = ctx.ShouldBindJSON(&event)
 
 	if err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{
