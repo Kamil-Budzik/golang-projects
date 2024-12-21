@@ -1,10 +1,12 @@
 package routes
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 	"github.com/kamil-budzik/event-booking/models"
+	"github.com/kamil-budzik/event-booking/utils"
 )
 
 func signup(ctx *gin.Context) {
@@ -51,7 +53,20 @@ func login(ctx *gin.Context) {
 		return
 	}
 
+	fmt.Println(user)
+
+	token, err := utils.GenerateToken(user.Email, 5)
+	if err != nil {
+		fmt.Println(err)
+		ctx.JSON(http.StatusInternalServerError, gin.H{
+			"message": "Could not authenticate user. Token error",
+			"err":     err,
+		})
+		return
+	}
+
 	ctx.JSON(http.StatusOK, gin.H{
 		"message": "Login successful",
+		"token":   token,
 	})
 }
