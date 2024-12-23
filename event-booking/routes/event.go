@@ -66,8 +66,8 @@ func createEvent(ctx *gin.Context) {
 
 func updateEvent(ctx *gin.Context) {
 	id := helpers.GetEventId(ctx)
+	userId := ctx.GetInt64("userId")
 	event := helpers.GetEventById(ctx, id)
-	_ = event
 
 	var updatedEvent models.Event
 	err := ctx.ShouldBindJSON(&updatedEvent)
@@ -76,6 +76,13 @@ func updateEvent(ctx *gin.Context) {
 		ctx.JSON(http.StatusBadRequest, gin.H{
 			"message": "Could not parse request data.",
 		})
+	}
+
+	if event.UserId != userId {
+		ctx.JSON(http.StatusUnauthorized, gin.H{
+			"message": "Not authorized to update event",
+		})
+		return
 	}
 
 	updatedEvent.ID = id
@@ -96,7 +103,15 @@ func updateEvent(ctx *gin.Context) {
 
 func deleteEvent(ctx *gin.Context) {
 	id := helpers.GetEventId(ctx)
+	userId := ctx.GetInt64("userId")
 	event := helpers.GetEventById(ctx, id)
+
+	if event.UserId != userId {
+		ctx.JSON(http.StatusUnauthorized, gin.H{
+			"message": "Not authorized to update event",
+		})
+		return
+	}
 
 	err := event.Delete()
 
