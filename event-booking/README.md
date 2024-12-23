@@ -14,17 +14,36 @@ This is a simple event booking application built using Go as part of an Udemy co
 
 ---
 
-## Installation
+## How to Install and Run Locally
 
 ### Prerequisites
-- Go installed on your machine (version 1.16 or later recommended)
-- A tool like [Postman](https://www.postman.com/) or `curl` for testing API endpoints
+- Go (version 1.16 or higher)
 
-### Steps
-1. Clone the repository:
+### Steps to Install
+
+1. **Clone the repository:**
    ```bash
    git clone https://github.com/Kamil-Budzik/golang-projects
    cd event-booking
+   ```
+
+2. **Install dependencies:**
+   The project uses Go modules, so dependencies will be managed automatically.
+   ```bash
+   go mod tidy
+   ```
+  
+3. **Run the application:**
+   ```bash
+   go run main.go
+   ```
+
+   By default, the application will start on `http://localhost:8080`.
+
+4. **Testing with Postman:**
+   - Import the provided Postman collection (included in the project) to test the various API endpoints.
+   - Ensure that you have valid authentication tokens for requests that require authorization.
+   - Example: Authorization: eyJlbWFpbCI6InRlc3QxQGV4YW1wbGUu
 
 ### User Management
 - **Create User**  
