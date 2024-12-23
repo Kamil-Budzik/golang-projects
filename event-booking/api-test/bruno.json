@@ -1,0 +1,287 @@
+{
+  "name": "event-booking",
+  "version": "1",
+  "items": [
+    {
+      "type": "http",
+      "name": "cancel-registration",
+      "seq": 10,
+      "request": {
+        "url": "http://localhost:8080/events/1/register",
+        "method": "DELETE",
+        "headers": [
+          {
+            "name": "authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QxQGV4YW1wbGUuY29tIiwiZXhwIjoxNzM0OTgzOTI0LCJ1c2VySWQiOjJ9.uFzovNCIvMFUPxChbH410Uj5JceFYgiKgjdCEv9nGAU",
+            "enabled": true
+          }
+        ],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "create-event",
+      "seq": 3,
+      "request": {
+        "url": "http://localhost:8080/events",
+        "method": "POST",
+        "headers": [
+          {
+            "name": "content-type",
+            "value": "application/json",
+            "enabled": true
+          },
+          {
+            "name": "Authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QxQGV4YW1wbGUuY29tIiwiZXhwIjoxNzM0OTgzOTI0LCJ1c2VySWQiOjJ9.uFzovNCIvMFUPxChbH410Uj5JceFYgiKgjdCEv9nGAU",
+            "enabled": true
+          }
+        ],
+        "params": [],
+        "body": {
+          "mode": "json",
+          "json": "{\n  \"name\": \"Test sdfgevent\",\n  \"description\": \"Tesdfgst event\",\n  \"location\": \"test lsdfgocation\",\n  \"dateTime\": \"2025-01-01T15:30:00.000Z\"\n}",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "create-user",
+      "seq": 7,
+      "request": {
+        "url": "http://localhost:8080/signup",
+        "method": "POST",
+        "headers": [
+          {
+            "name": "content-type",
+            "value": "application/json",
+            "enabled": true
+          }
+        ],
+        "params": [],
+        "body": {
+          "mode": "json",
+          "json": "{\n  \"email\": \"test1@example.com\",\n  \"password\": \"test\"\n}",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "delete-event",
+      "seq": 6,
+      "request": {
+        "url": "http://localhost:8080/events/19",
+        "method": "DELETE",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QxQGV4YW1wbGUuY29tIiwiZXhwIjoxNzM0OTgxODgzLCJ1c2VySWQiOjV9.KI9RmH5JDSWXDt0ld5OuBUh7zoofRzp28JeP92u1Z5U",
+            "enabled": true
+          }
+        ],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "get-event",
+      "seq": 2,
+      "request": {
+        "url": "http://localhost:8080/events/20",
+        "method": "GET",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "get-events",
+      "seq": 1,
+      "request": {
+        "url": "http://localhost:8080/events",
+        "method": "GET",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "login",
+      "seq": 8,
+      "request": {
+        "url": "http://localhost:8080/login",
+        "method": "POST",
+        "headers": [
+          {
+            "name": "content-type",
+            "value": "application/json",
+            "enabled": true
+          }
+        ],
+        "params": [],
+        "body": {
+          "mode": "json",
+          "json": "{\n  \"email\": \"test1@example.com\",\n  \"password\": \"test\"\n}",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "register",
+      "seq": 9,
+      "request": {
+        "url": "http://localhost:8080/events/1/register",
+        "method": "POST",
+        "headers": [
+          {
+            "name": "authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QxQGV4YW1wbGUuY29tIiwiZXhwIjoxNzM0OTgzOTI0LCJ1c2VySWQiOjJ9.uFzovNCIvMFUPxChbH410Uj5JceFYgiKgjdCEv9nGAU",
+            "enabled": true
+          }
+        ],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "update-event",
+      "seq": 4,
+      "request": {
+        "url": "http://localhost:8080/events/3",
+        "method": "PUT",
+        "headers": [
+          {
+            "name": "content-type",
+            "value": "application/json",
+            "enabled": true
+          }
+        ],
+        "params": [],
+        "body": {
+          "mode": "json",
+          "json": "{\n  \"name\": \"updasdfgted test event\",\n  \"description\": \"updateddsfgs test desc\",\n  \"location\": \"test locadsfgtion updated\",\n  \"dateTime\": \"2025-01-01T15:30:00Z\"\n}",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
+    }
+  ],
+  "environments": [],
+  "brunoConfig": {
+    "version": "1",
+    "name": "event-booking",
+    "type": "collection",
+    "ignore": [
+      "node_modules",
+      ".git"
+    ],
+    "presets": {
+      "requestType": "http",
+      "requestUrl": "http://localhost:8080"
+    }
+  }
+}
