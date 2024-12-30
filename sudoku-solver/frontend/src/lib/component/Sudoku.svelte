@@ -23,6 +23,13 @@
 				maxlength="1"
 				value={cell === 0 ? '' : cell}
 				on:input={(e) => handleInput(e, rowIndex, colIndex)}
+				class={`w-10 h-10 text-center text-lg font-bold border
+					${(Math.floor(rowIndex / 3) + Math.floor(colIndex / 3)) % 2 === 0 ? 'bg-gray-100' : 'bg-white'}
+					${colIndex % 3 === 0 ? 'border-l-2' : ''}
+					${rowIndex % 3 === 0 ? 'border-t-2' : ''}
+					${colIndex === 8 ? 'border-r-2' : ''}
+					${rowIndex === 8 ? 'border-b-2' : ''}
+					border-gray-500`}
 			/>
 		{/each}
 	{/each}
