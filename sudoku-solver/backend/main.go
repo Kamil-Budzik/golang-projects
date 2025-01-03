@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 
 	"github.com/gofiber/fiber/v3"
+	"github.com/gofiber/fiber/v3/middleware/cors"
 	"github.com/kamil-budzik/sudoku-solver/sudoku"
 )
 
@@ -13,6 +14,7 @@ type SolveRequest struct {
 
 func main() {
 	app := fiber.New()
+	app.Use(cors.New())
 
 	app.Post("/solve", func(c fiber.Ctx) error {
 		var req SolveRequest
