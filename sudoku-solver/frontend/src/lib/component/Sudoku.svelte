@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let board: number[][] = Array(9).fill(Array(9).fill(0));
+	export let board: number[][];
 
 	function handleInput(event: Event, row: number, col: number): void {
 		const target = event.target as HTMLInputElement;
